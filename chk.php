@@ -1,5 +1,7 @@
 <?php
 require("phpMQTT.php");
+
+$client = new Mosquitto\Client();
 	
 $mqtt = new phpMQTT("km1.io", 1883, "phpMQTT Pub Example");
 if(!$mqtt->$mqtt->connect(true,NULL, $username = 'anakkapon', $password = 'ubgawoik')){
