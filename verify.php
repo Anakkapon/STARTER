@@ -1,6 +1,6 @@
 <?php
 
-require 'https://github.com/bluerhinos/phpMQTT/blob/master/phpMQTT.php'
+require 'phpMQTT.php'
 
 $access_token = 'cY2AWZ1+7iEYQ5JhJuaGznVFoQWAZyNzRUiruUxxi2imxTvv2sLW9j+2v+LtTLbrLp0oacW1Qf89UnJZCKvAFgAC16x4FifUfx++cxR1tm9AiYL+ekybcxT6e/JNx5WwUyZKZ84Whd1lwJl9K8Rf6QdB04t89/1O/w1cDnyilFU=';
 
