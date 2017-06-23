@@ -3,6 +3,7 @@
 require ("phpMQTT.php");
 
 $access_token = 'mzh7DDNB8Ui5/Q0UcWIXO0op83Wi+tkP4LQWscYDxDfPRazOeqCPcG6adySX+3TTO1KfonOcewrB4x2ipuEp9RGyA4nl2pV+9KIkoWZNA6exPh5QXtH3ht+XOwgBgnThw7a2T4P8P9tuivAw9vUP1gdB04t89/1O/w1cDnyilFU=';
+$mqtt = new phpMQTT("km1.io", 1883, "phpMQTT Pub Example"); //Change client name to something unique
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -21,10 +22,9 @@ if (!is_null($events['events'])) {
 			
 					
 			
-			$mqtt = new phpMQTT("km1.io", 1883, "phpMQTT Pub Example"); //Change client name to something unique
+			
 			if ($mqtt->connect(true,NULL, $username = 'anakkapon', $password = 'ubgawoik')) {
 				$mqtt->publish("/anakkapon/rm2",$text,0);
-				$mqtt->close();
 			}
 			
 			 //currently subscribed topics
@@ -69,4 +69,5 @@ echo "OK";
  
   function procmsg($topic,$msg){
     echo "Msg Recieved: $msg";
+	  $mqtt->publish("/anakkapon/roo,507","subbbbbb !!!!!!!!!",0);
   }
