@@ -4,9 +4,9 @@ $client->onConnect('connect');
 $client->onDisconnect('disconnect');
 $client->onSubscribe('subscribe');
 $client->onMessage('message');
-$client->connect("localhost", 1883, 5);
+$client->connect("www.km1.io", 1883, 5);
 $client->onLog('logger');
-$client->subscribe('/#', 1);
+$client->subscribe('/anakkapon/room507', 1);
 $client->loopForever();
 function connect($r) {
 	echo "I got code {$r}\n";
