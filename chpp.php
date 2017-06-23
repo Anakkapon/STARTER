@@ -1,12 +1,14 @@
 <?php
 require("phpMQTT.php");
 	
-$mqtt = new phpMQTT("example.com", 1883, "phpMQTT Sub Example"); //Change client name to something unique
-if(!$mqtt->connect()){
+$mqtt = new phpMQTT("km1.io", 1883, "phpMQTT Pub Example");
+if(!$mqtt->$mqtt->connect(true,NULL, $username = 'anakkapon', $password = 'ubgawoik')){
 	exit(1);
 }
-$topics['ferries/IOW/#'] = array("qos"=>0, "function"=>"procmsg");
+
+$topics['/anakkapon/room507'] = array("qos"=>0, "function"=>"procmsg");
 $mqtt->subscribe($topics,0);
+
 while($mqtt->proc()){
 		
 }
