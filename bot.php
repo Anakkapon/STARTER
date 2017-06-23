@@ -51,13 +51,13 @@ echo "OK";
 
  
   function procmsg($topic,$msg){
-    echo "Msg Recieved: $msg";
+    //echo "Msg Recieved: $msg";
 	  
 	  		$access_token = 'mzh7DDNB8Ui5/Q0UcWIXO0op83Wi+tkP4LQWscYDxDfPRazOeqCPcG6adySX+3TTO1KfonOcewrB4x2ipuEp9RGyA4nl2pV+9KIkoWZNA6exPh5QXtH3ht+XOwgBgnThw7a2T4P8P9tuivAw9vUP1gdB04t89/1O/w1cDnyilFU=';
 	  		$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
-				'messages' => [$messages],
+				'messages' => [$msg],
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
