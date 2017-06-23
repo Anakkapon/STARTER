@@ -19,6 +19,7 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			
+					
 			
 			$mqtt = new phpMQTT("km1.io", 1883, "phpMQTT Pub Example"); //Change client name to something unique
 			if ($mqtt->connect(true,NULL, $username = 'anakkapon', $password = 'ubgawoik')) {
@@ -26,7 +27,14 @@ if (!is_null($events['events'])) {
 				$mqtt->close();
 			}
 			
-		
+			 //currently subscribed topics
+			  $topics['topic'] = array("qos"=>0, "function"=>"procmsg");
+			  $mqtt->subscribe($topics,0);
+
+			  while($mqtt->proc()){        
+			  }
+			
+			  $mqtt->close();
 
 			// Build message to reply back
 			$messages = [
@@ -57,3 +65,8 @@ if (!is_null($events['events'])) {
 	}
 }
 echo "OK";
+
+ 
+  function procmsg($topic,$msg){
+    echo "Msg Recieved: $msg";
+  }
