@@ -15,7 +15,7 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 $result = curl_exec($ch);
 curl_close($ch);
 
-echo $result;
+
 
 $mqtt = new phpMQTT("km1.io", 1883, "phpMQTT Pub Example"); //Change client name to something unique
 
@@ -23,3 +23,6 @@ if ($mqtt->connect(true,NULL, $username = 'anakkapon', $password = 'ubgawoik')) 
 	$mqtt->publish("/anakkapon/rm2","Hello World! at ".date("r"),0);
 	$mqtt->close();
 }
+
+echo $result;
+?>
