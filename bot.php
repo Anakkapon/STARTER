@@ -28,7 +28,7 @@ if (!is_null($events['events'])) {
 			}
 			
 			 //currently subscribed topics
-			  $topics['topic'] = array("qos"=>0, "function"=>"procmsg");
+			  $topics['/anakkapon/rm2'] = array("qos"=>0, "function"=>"procmsg");
 			  $mqtt->subscribe($topics,0);
 
 			  while($mqtt->proc()){        
