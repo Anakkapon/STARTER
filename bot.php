@@ -3,7 +3,7 @@
 require ("phpMQTT.php");
 
 $access_token = 'mzh7DDNB8Ui5/Q0UcWIXO0op83Wi+tkP4LQWscYDxDfPRazOeqCPcG6adySX+3TTO1KfonOcewrB4x2ipuEp9RGyA4nl2pV+9KIkoWZNA6exPh5QXtH3ht+XOwgBgnThw7a2T4P8P9tuivAw9vUP1gdB04t89/1O/w1cDnyilFU=';
-$mqtt = new phpMQTT("km1.io", 1883, "phpMQTT Pub Example"); //Change client name to something unique
+
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -21,14 +21,14 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			
 					
-			
+			$mqtt = new phpMQTT("km1.io", 1883, "phpMQTT Pub Example"); //Change client name to something unique
 			
 			if ($mqtt->connect(true,NULL, $username = 'anakkapon', $password = 'ubgawoik')) {
 				$mqtt->publish("/anakkapon/rm2",$text,0);
 			}
 			
 			 //currently subscribed topics
-			  $topics['/anakkapon/rm2'] = array("qos"=>0, "function"=>"procmsg");
+			  $topics['/anakkapon/room507'] = array("qos"=>0, "function"=>"procmsg");
 			  $mqtt->subscribe($topics,0);
 
 			  while($mqtt->proc()){        
@@ -43,7 +43,18 @@ if (!is_null($events['events'])) {
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
-			$url = 'https://api.line.me/v2/bot/message/reply';
+		
+		}
+	}
+}
+echo "OK";
+
+ 
+  function procmsg($topic,$msg){
+    echo "Msg Recieved: $msg";
+	  
+	  		$access_token = 'mzh7DDNB8Ui5/Q0UcWIXO0op83Wi+tkP4LQWscYDxDfPRazOeqCPcG6adySX+3TTO1KfonOcewrB4x2ipuEp9RGyA4nl2pV+9KIkoWZNA6exPh5QXtH3ht+XOwgBgnThw7a2T4P8P9tuivAw9vUP1gdB04t89/1O/w1cDnyilFU=';
+	  		$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
 				'messages' => [$messages],
@@ -61,13 +72,5 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n";
-		}
-	}
-}
-echo "OK";
-
- 
-  function procmsg($topic,$msg){
-    echo "Msg Recieved: $msg";
-	  $mqtt->publish("/anakkapon/roo,507","subbbbbb !!!!!!!!!",0);
+	
   }
